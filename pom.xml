@@ -8,6 +8,21 @@
   <artifactId>hash-to-curve</artifactId>
   <version>1.1.0-SNAPSHOT</version>
 
+  <name>DIGG Crypto :: Hash2Curve</name>
+  <description>Implementation of Hash2Curve and Hash2Scalar in accordance with RFC 9380</description>
+
+  <organization>
+    <name>Myndigheten för Digital Förvaltning</name>
+    <url>https://www.digg.se</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <name>Stefan Santesson</name>
+      <email>stefan@aaa-sec.com</email>
+    </developer>
+  </developers>
+
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
@@ -15,11 +30,6 @@
     <slf4j.version>2.0.17</slf4j.version>
     <bouncycastle.version>1.80</bouncycastle.version>
   </properties>
-
-  <organization>
-    <name>Myndigheten för Digital Förvaltning</name>
-    <url>https://www.digg.se</url>
-  </organization>
 
   <repositories>
     <repository>
