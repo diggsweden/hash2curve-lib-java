@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 The Hash To Curve Authors
+#
+# SPDX-License-Identifier: EUPL-1.2
+
 .DS_Store
 
 *.class
@@ -18,10 +22,14 @@
 target
 Servers
 logs
+*.log
 generated
 MANIFEST.MF
 test-output
 .factorypath
+
+### VS Code ###
+.vscode/
 
 # Intelij
 *.iml

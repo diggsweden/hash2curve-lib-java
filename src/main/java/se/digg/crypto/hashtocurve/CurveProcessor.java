@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 The Hash To Curve Authors
+//
+// SPDX-License-Identifier: EUPL-1.2
+
 package se.digg.crypto.hashtocurve;
 
 import org.bouncycastle.math.ec.ECPoint;
