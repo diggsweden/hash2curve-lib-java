@@ -7,8 +7,7 @@ SPDX-License-Identifier: EUPL-1.2
 -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>se.digg.crypto</groupId>
@@ -176,7 +175,7 @@ SPDX-License-Identifier: EUPL-1.2
     </plugins>
   </build>
 
-<profiles>
+  <profiles>
     <profile>
       <id>central-release</id>
       <build>
@@ -216,6 +215,7 @@ SPDX-License-Identifier: EUPL-1.2
             <version>${maven.javadoc.plugin.version}</version>
             <configuration>
               <source>${java.version}</source>
+              <windowtitle>Hash2Curve java - ${project.version}</windowtitle>
               <bottom>Hash2Curve Java Library documentation, generated in {currentYear}.</bottom>
             </configuration>
             <executions>
