@@ -5,9 +5,7 @@
 package se.digg.crypto.hashtocurve.impl;
 
 import java.math.BigInteger;
-
 import org.bouncycastle.jce.spec.ECParameterSpec;
-
 import se.digg.crypto.hashtocurve.H2cUtils;
 import se.digg.crypto.hashtocurve.SqrtRatioCalculator;
 import se.digg.crypto.hashtocurve.data.SqrtRatio;
@@ -17,18 +15,13 @@ import se.digg.crypto.hashtocurve.data.SqrtRatio;
  */
 public class GenericSqrtRatioCalculator implements SqrtRatioCalculator {
 
-  private final ECParameterSpec ecParameterSpec;
-  private final BigInteger z;
-
   private final BigInteger q;
 
   private final int c1;
   private final BigInteger c2, c3, c4, c5, c6, c7;
 
   public GenericSqrtRatioCalculator(final ECParameterSpec ecParameterSpec, final BigInteger z) {
-    this.ecParameterSpec = ecParameterSpec;
     this.q = ecParameterSpec.getCurve().getField().getCharacteristic();
-    this.z = z;
     this.c1 = this.calculateC1();
 
     this.c2 = this.q.subtract(BigInteger.ONE).divide(BigInteger.TWO.pow(this.c1));

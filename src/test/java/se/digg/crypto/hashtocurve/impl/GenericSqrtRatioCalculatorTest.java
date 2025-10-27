@@ -4,12 +4,10 @@
 
 package se.digg.crypto.hashtocurve.impl;
 
+import java.math.BigInteger;
 import org.bouncycastle.jce.ECNamedCurveTable;
 import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.junit.jupiter.api.Test;
-import java.math.BigInteger;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test class for the GenericSqrtRatioCalculator
@@ -22,7 +20,5 @@ public class GenericSqrtRatioCalculatorTest {
     BigInteger z = BigInteger.valueOf(-10);
     GenericSqrtRatioCalculator calc = new GenericSqrtRatioCalculator(ecParameterSpec, z);
     calc.sqrtRatio(BigInteger.ONE, BigInteger.TWO);
-
   }
-
 }

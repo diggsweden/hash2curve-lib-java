@@ -4,6 +4,10 @@
 
 package se.digg.crypto.hashtocurve;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.math.BigInteger;
+import java.security.Security;
 import lombok.extern.slf4j.Slf4j;
 import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.jce.ECNamedCurveTable;
@@ -13,12 +17,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import se.digg.crypto.hashtocurve.impl.GenericOPRFHashToScalar;
 
-import java.math.BigInteger;
-import java.security.Security;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * Testing hash 2 curve utility functions
  */
@@ -26,7 +24,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class H2cUtilsTest {
 
   static ECParameterSpec p256Spec = ECNamedCurveTable.getParameterSpec("P-256");
-  static GenericOPRFHashToScalar hashToScalar = new GenericOPRFHashToScalar(p256Spec, new SHA256Digest(), 48);
+  static GenericOPRFHashToScalar hashToScalar =
+      new GenericOPRFHashToScalar(p256Spec, new SHA256Digest(), 48);
 
   @BeforeAll
   static void init() {
@@ -38,20 +37,8 @@ class H2cUtilsTest {
   @Test
   void isSquareTest() throws Exception {
 
-    List<String> smallerXValues = List.of(
-        "4fe14bb3946e9c23a1cacb43de358e45a9931786067278f6ae3315c216e39a0",
-        "d1d12dd2a682259a5dc0da4b79734d4ab6d435c85c8c980e03f8297611e18937",
-        "497e89c30c3ed11d291aafcefc02be894f4d87cb29467fa0457b9c02366239d8",
-        "d1359226395e08d382cc7528b4ff8ed7f7ed991783fe0eb0f9a3ef2449fb1079",
-        "26d12894c6600f99a3ee553a2c339c33058c09f2b7ed184ae9577a0423a9cdf3",
-        "5f4edc4e4f1f5dc6eb218bf0791cb80dc264e1d0c2dfcd1cbd00f3b969bcaa56",
-        "e87cfbe1079f777ff54c82b3bef8edb4dba40762c4c12715952195bc4c146030",
-        "ed1c985837abfb9317126e52849880155a3e70316ac7c4d7ce343024e975b3f5",
-        "d7e6c6967d58188bf24bd7aaa04747ab1237725f23eaa47c0e3206f8b4a3c5f5",
-        "163f11e2d45d62ed5d4f4503f8fd095a2c292e27554cf859f436332bc3ce6bbe"
-    );
-
-    boolean[] expectedValues = new boolean[] { true, false, false, true, true, false, false, false, true, false };
+    boolean[] expectedValues =
+        new boolean[] {true, false, false, true, true, false, false, false, true, false};
 
     log.info("P256 curve order: {}", p256Spec.getCurve().getOrder().toString(16));
 

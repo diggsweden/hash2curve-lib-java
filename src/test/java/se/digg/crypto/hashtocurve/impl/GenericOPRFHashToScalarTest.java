@@ -4,6 +4,8 @@
 
 package se.digg.crypto.hashtocurve.impl;
 
+import java.math.BigInteger;
+import java.security.Security;
 import lombok.extern.slf4j.Slf4j;
 import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.jce.ECNamedCurveTable;
@@ -14,11 +16,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import se.digg.crypto.hashtocurve.MessageExpansion;
 
-import java.math.BigInteger;
-import java.security.Security;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * Test HashToScalar
  */
@@ -26,7 +23,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class GenericOPRFHashToScalarTest {
 
   static ECParameterSpec p256Spec = ECNamedCurveTable.getParameterSpec("P-256");
-  static GenericOPRFHashToScalar hashToScalar = new GenericOPRFHashToScalar(p256Spec, new SHA256Digest(), 128);
+  static GenericOPRFHashToScalar hashToScalar =
+      new GenericOPRFHashToScalar(p256Spec, new SHA256Digest(), 128);
 
   @BeforeAll
   static void init() {

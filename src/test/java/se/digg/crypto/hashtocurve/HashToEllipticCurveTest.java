@@ -4,7 +4,14 @@
 
 package se.digg.crypto.hashtocurve;
 
-import lombok.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.Security;
+import java.util.List;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.crypto.digests.SHA256Digest;
 import org.bouncycastle.crypto.digests.SHA384Digest;
@@ -16,20 +23,11 @@ import org.bouncycastle.math.ec.ECPoint;
 import org.bouncycastle.util.encoders.Hex;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.Security;
-import java.util.List;
-
-import lombok.extern.slf4j.Slf4j;
 import se.digg.crypto.hashtocurve.data.HashToCurveProfile;
-import se.digg.crypto.hashtocurve.impl.XmdMessageExpansion;
 import se.digg.crypto.hashtocurve.impl.GenericCurveProcessor;
 import se.digg.crypto.hashtocurve.impl.GenericHashToField;
 import se.digg.crypto.hashtocurve.impl.ShallueVanDeWoestijneMapToCurve;
+import se.digg.crypto.hashtocurve.impl.XmdMessageExpansion;
 
 /**
  * Test suite for HashToEllipticCurve class.
@@ -50,10 +48,10 @@ public class HashToEllipticCurveTest {
     //TODO Add support for Montgomery curves (required for curve25519).
 
     List<HashToCurveProfile> profileList = List.of(
-      HashToCurveProfile.P256_XMD_SHA_256_SSWU_RO_,
-      HashToCurveProfile.P384_XMD_SHA_384_SSWU_RO_,
-      HashToCurveProfile.P521_XMD_SHA_512_SSWU_RO_
-//    HashToCurveProfile.curve25519_XMD_SHA_512_ELL2_RO_
+        HashToCurveProfile.P256_XMD_SHA_256_SSWU_RO_,
+        HashToCurveProfile.P384_XMD_SHA_384_SSWU_RO_,
+        HashToCurveProfile.P521_XMD_SHA_512_SSWU_RO_
+        //    HashToCurveProfile.curve25519_XMD_SHA_512_ELL2_RO_
     );
 
     for (HashToCurveProfile profile : profileList) {
@@ -61,21 +59,22 @@ public class HashToEllipticCurveTest {
     }
   }
 
-  public void performTestOnSpecificCurveProfile(HashToCurveProfile profile, boolean useTestVectorU) throws Exception {
+  public void performTestOnSpecificCurveProfile(HashToCurveProfile profile, boolean useTestVectorU)
+      throws Exception {
     TestVectorData tvd = TestVectors.getTestVectors(profile);
     BigInteger Z = h2bi(tvd.getZ(), tvd.getField().getP());
     int L = h2bi(tvd.getL()).intValue();
     log.info("Performing test vector tests on ciphersuite: {}", profile.getCipherSuiteID());
     log.info("Details:\n"
-        + "   Curve: {}\n"
-        + "   Hash: {}\n"
-        + "   dst: {}\n"
-        + "   L: {}\n"
-        + "   Z: {}\n"
-        + "   Field m: {}\n"
-        + "   Field p: {}\n"
-      , tvd.getCurve(), tvd.getHash(), tvd.getDst(), L, Z,
-      tvd.getField().getM(), tvd.getField().getP());
+            + "   Curve: {}\n"
+            + "   Hash: {}\n"
+            + "   dst: {}\n"
+            + "   L: {}\n"
+            + "   Z: {}\n"
+            + "   Field m: {}\n"
+            + "   Field p: {}\n"
+        , tvd.getCurve(), tvd.getHash(), tvd.getDst(), L, Z,
+        tvd.getField().getM(), tvd.getField().getP());
 
     ECParameterSpec spec = switch (profile) {
       case P256_XMD_SHA_256_SSWU_RO_ -> ECNamedCurveTable.getParameterSpec("P-256");
@@ -92,18 +91,20 @@ public class HashToEllipticCurveTest {
 
     CurveProcessor curveProcessor = new GenericCurveProcessor(spec);
     MessageExpansion messExp = new XmdMessageExpansion(digest, profile.getK());
-    GenericHashToField hashToField = new GenericHashToField(tvd.getDst().getBytes(StandardCharsets.UTF_8), spec, messExp, profile.getL());
+    GenericHashToField hashToField =
+        new GenericHashToField(tvd.getDst().getBytes(StandardCharsets.UTF_8), spec, messExp,
+            profile.getL());
     MapToCurve mapToCurve = new ShallueVanDeWoestijneMapToCurve(spec, profile.getZ());
 
     assertEquals(Z, profile.getZ());
     assertEquals(L, profile.getL());
 
-    TestHashToEllipticCurve h2c = new TestHashToEllipticCurve(hashToField, mapToCurve, curveProcessor);
+    TestHashToEllipticCurve h2c =
+        new TestHashToEllipticCurve(hashToField, mapToCurve, curveProcessor);
 
     // Run individual vectors
     List<TestVectorData.Vector> vectors = tvd.getVectors();
     for (TestVectorData.Vector vector : vectors) {
-      byte[] messageBytes = vector.getMsg().getBytes(StandardCharsets.UTF_8);
 
       if (useTestVectorU) {
         // Replace with test vector u values
@@ -111,8 +112,9 @@ public class HashToEllipticCurveTest {
         h2c.setNextU1(h2bi(vector.getU().get(1)));
       }
 
-      ECPoint point = executeAndLogResult("Results for msg: " + vector.getMsg(), vector.getMsg(), h2c,
-        hexStrip(vector.getP().get("x")), hexStrip(vector.getP().get("y")));
+      ECPoint point =
+          executeAndLogResult("Results for msg: " + vector.getMsg(), vector.getMsg(), h2c,
+              hexStrip(vector.getP().get("x")), hexStrip(vector.getP().get("y")));
       compare(vector.getP().get("x"), vector.getP().get("y"), point);
     }
 
@@ -134,7 +136,8 @@ public class HashToEllipticCurveTest {
     assertEquals(vectorVal.substring(startIndex), resultVal);
   }
 
-  public ECPoint executeAndLogResult(String description, String msg, HashToEllipticCurve h2c, String px, String py) throws Exception {
+  public ECPoint executeAndLogResult(String description, String msg, HashToEllipticCurve h2c,
+      String px, String py) throws Exception {
     log.info(description);
     ECPoint ecPoint = h2c.hashToEllipticCurve(msg.getBytes(StandardCharsets.UTF_8));
     String x = ecPoint.getXCoord().toString();
@@ -160,18 +163,21 @@ public class HashToEllipticCurveTest {
 
   private String hexStrip(String hexStr) {
     return hexStr.startsWith("0x") || hexStr.startsWith("0X")
-      ? hexStr.substring(2)
-      : hexStr;
+        ? hexStr.substring(2)
+        : hexStr;
   }
 
   public static class TestHashToEllipticCurve extends HashToEllipticCurve {
 
-    public TestHashToEllipticCurve(HashToField hashToField, MapToCurve mapToCurve, CurveProcessor curveProcessor) {
+    public TestHashToEllipticCurve(HashToField hashToField, MapToCurve mapToCurve,
+        CurveProcessor curveProcessor) {
       super(hashToField, mapToCurve, curveProcessor);
     }
 
-    @Setter BigInteger nextU0;
-    @Setter BigInteger nextU1;
+    @Setter
+    BigInteger nextU0;
+    @Setter
+    BigInteger nextU1;
 
     @Override
     public ECPoint hashToEllipticCurve(byte[] message) {
