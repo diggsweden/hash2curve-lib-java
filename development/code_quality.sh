@@ -138,8 +138,6 @@ check_exit_codes() {
 }
 
 determine_container_runtime
-is_command_available 'node' 'https://nodejs.org/'
-is_command_available 'npm' 'https://nodejs.org/'
 is_command_available 'sed' ''
 
 lint
