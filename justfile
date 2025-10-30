@@ -99,7 +99,7 @@ lint-shell:
     printf '{{yellow}}************ SHELL LINTING ***********{{nc}}\n'
     if [ -n "$(find . -name '*.sh' -type f | head -1)" ]; then
         find . -name '*.sh' -type f | xargs shellcheck || exit 1
-        find . -name '*.sh' -type f | xargs shfmt -d || exit 1
+        find . -name '*.sh' -type f | xargs shfmt -d -i 2 || exit 1
     else
         printf 'No shell scripts found, skipping\n'
     fi
@@ -171,7 +171,7 @@ lint-shell-fix:
     set -euo pipefail
     printf '{{yellow}}************ FIXING SHELL ***********{{nc}}\n'
     if [ -n "$(find . -name '*.sh' -type f | head -1)" ]; then
-        find . -name '*.sh' -type f | xargs shfmt -w
+        find . -name '*.sh' -type f | xargs shfmt -w -i 2
     fi
     printf '{{green}}{{checkmark}} Shell scripts formatted{{nc}}\n\n'
 
