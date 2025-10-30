@@ -36,7 +36,7 @@ install:
     @mise install
     @printf '{{green}}{{checkmark}} All tools installed{{nc}}\n'
 
-# Run all quality verifications (replaces code_quality.sh)
+# Run all quality verifications
 verify: verify-deps lint test lint-license
     @printf '\n{{yellow}}======== QUALITY CHECK SUMMARY ========{{nc}}\n\n'
     @printf '{{green}}{{checkmark}} All checks completed{{nc}}\n'

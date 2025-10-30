@@ -22,10 +22,10 @@ jobs:
     with:
       project-type: maven
       workflows-ref: feat/branch-2.1 # Use feature branch with enhanced linting
-      linters.megalint: false # Disable heavy MegaLinter
-      linters.justmiselint: true # Enable lightweight just+mise linting
-      linters.commitlint: false # Handled by justfile (lint-commit)
-      linters.licenselint: false # Handled by justfile (lint-license)
+      linters.megalint: false # Deprecated - replaced by just+mise
+      linters.justmiselint: true # Use just+mise for all linting
+      linters.commitlint: false # Deprecated - handled by just+mise
+      linters.licenselint: false # Deprecated - handled by just+mise
 
   test:
     needs: [pr-checks]
