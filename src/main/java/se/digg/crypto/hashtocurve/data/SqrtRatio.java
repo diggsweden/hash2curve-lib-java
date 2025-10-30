@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2025 The Hash To Curve Authors
+// SPDX-FileCopyrightText: 2025 Digg - Agency for Digital Government
 //
 // SPDX-License-Identifier: EUPL-1.2
 
@@ -10,6 +10,6 @@ import java.math.BigInteger;
  * The result of a sqrt_ration calculation.
  */
 public record SqrtRatio(
-    boolean isQR,
-    BigInteger ratio) {
+        boolean isQR,
+        BigInteger ratio) {
 }

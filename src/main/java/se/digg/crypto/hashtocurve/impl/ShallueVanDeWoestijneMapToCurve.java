@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2025 The Hash To Curve Authors
+// SPDX-FileCopyrightText: 2025 Digg - Agency for Digital Government
 //
 // SPDX-License-Identifier: EUPL-1.2
 
@@ -35,7 +35,8 @@ public class ShallueVanDeWoestijneMapToCurve implements MapToCurve {
    * Woestijne algorithm, optimized for Weierstrass curves. This implementation adheres to the
    * specifications outlined in RFC 9380, section 6.6.2, and section F.2 for efficient computation.
    *
-   * <p>The method computes the x and y coordinates for the point on the elliptic curve, using modular
+   * <p>
+   * The method computes the x and y coordinates for the point on the elliptic curve, using modular
    * arithmetic and auxiliary functions for square root computation and conditional assignments.
    *
    * @param u the input value to be mapped to a point on the elliptic curve

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2025 The Hash To Curve Authors
+// SPDX-FileCopyrightText: 2025 Digg - Agency for Digital Government
 //
 // SPDX-License-Identifier: EUPL-1.2
 
@@ -10,7 +10,7 @@ import org.bouncycastle.math.ec.ECPoint;
  * The Hash to field points produced by hash_to_field(msg, 2).
  */
 public record MapToCurvePoints(
-    ECPoint q0,
-    ECPoint q1) {
+        ECPoint q0,
+        ECPoint q1) {
 
 }

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2025 The Hash To Curve Authors
+// SPDX-FileCopyrightText: 2025 Digg - Agency for Digital Government
 //
 // SPDX-License-Identifier: EUPL-1.2
 
@@ -11,7 +11,8 @@ import lombok.Getter;
 /**
  * Supported profiles for hash to curve.
  *
- * <p>_NU_ is identical to _RO_, * except that the encoding type is encode_to_curve. encode_to_curve is
+ * <p>
+ * _NU_ is identical to _RO_, * except that the encoding type is encode_to_curve. encode_to_curve is
  * not yet implemented in this lib, thus these options are not yet included.
  */
 @Getter
