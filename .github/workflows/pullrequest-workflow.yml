@@ -21,8 +21,11 @@ jobs:
       security-events: write # Upload SpotBugs/dependency check results to Security tab
     with:
       project-type: maven
+      workflows-ref: feat/branch-2.1 # Use feature branch with enhanced linting
       linters.megalint: false # Disable heavy MegaLinter
       linters.justmiselint: true # Enable lightweight just+mise linting
+      linters.commitlint: false # Handled by justfile (lint-commit)
+      linters.licenselint: false # Handled by justfile (lint-license)
 
   test:
     needs: [pr-checks]
