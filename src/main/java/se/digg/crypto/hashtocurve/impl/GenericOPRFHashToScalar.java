@@ -13,6 +13,7 @@ import se.digg.crypto.hashtocurve.MessageExpansion;
 /**
  * Generic implementation of Hash to Scalar for OPRF.
  */
+@SuppressWarnings({"checkstyle:MemberName", "checkstyle:AbbreviationAsWordInName"})
 public class GenericOPRFHashToScalar implements HashToScalar {
 
   private final ECParameterSpec ecParameterSpec;

@@ -12,8 +12,7 @@ import se.digg.crypto.hashtocurve.data.HashToCurveProfile;
 /**
  * Main class for implementing hash to elliptic curve according to RFC 9380.
  *
- * <p>
- * <code>
+ * <p><code>
  * Steps:
  * 1. u = hash_to_field(msg, 2)
  * 2. Q0 = map_to_curve(u[0])

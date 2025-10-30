@@ -9,6 +9,7 @@ import java.math.BigInteger;
 /**
  * The result of a sqrt_ration calculation.
  */
+@SuppressWarnings("checkstyle:AbbreviationAsWordInName")
 public record SqrtRatio(
     boolean isQR,
     BigInteger ratio) {

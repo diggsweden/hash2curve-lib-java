@@ -13,12 +13,18 @@ import se.digg.crypto.hashtocurve.data.SqrtRatio;
 /**
  * Generic implementation of the SqrtRatio calculator.
  */
+@SuppressWarnings({"checkstyle:MemberName", "checkstyle:AbbreviationAsWordInName"})
 public class GenericSqrtRatioCalculator implements SqrtRatioCalculator {
 
   private final BigInteger q;
 
   private final int c1;
-  private final BigInteger c2, c3, c4, c5, c6, c7;
+  private final BigInteger c2;
+  private final BigInteger c3;
+  private final BigInteger c4;
+  private final BigInteger c5;
+  private final BigInteger c6;
+  private final BigInteger c7;
 
   public GenericSqrtRatioCalculator(final ECParameterSpec ecParameterSpec, final BigInteger z) {
     this.q = ecParameterSpec.getCurve().getField().getCharacteristic();
@@ -32,6 +38,7 @@ public class GenericSqrtRatioCalculator implements SqrtRatioCalculator {
     this.c7 = z.modPow(this.c2.add(BigInteger.ONE).divide(BigInteger.TWO), q);
   }
 
+  @SuppressWarnings("checkstyle:LocalVariableName")
   private int calculateC1() {
     BigInteger qMinusOne = this.q.subtract(BigInteger.ONE);
     int c1 = 0;
@@ -43,6 +50,7 @@ public class GenericSqrtRatioCalculator implements SqrtRatioCalculator {
   }
 
   @Override
+  @SuppressWarnings("checkstyle:VariableDeclarationUsageDistance")
   public SqrtRatio sqrtRatio(final BigInteger u, final BigInteger v) {
 
     BigInteger tv1 = this.c6;

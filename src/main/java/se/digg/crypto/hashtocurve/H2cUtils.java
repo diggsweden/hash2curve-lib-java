@@ -175,6 +175,10 @@ public class H2cUtils {
    * @param order curve order
    * @return first non-square member of the curve order
    */
+  @SuppressWarnings("PMD.AvoidThrowingRawExceptionTypes")
+  @edu.umd.cs.findbugs.annotations.SuppressFBWarnings(
+      value = "THROWS_METHOD_THROWS_RUNTIMEEXCEPTION",
+      justification = "RuntimeException is appropriate for illegal field state")
   private static BigInteger getFirstNonSquare(final BigInteger order) {
     final BigInteger maxCount = new BigInteger("1000");
     BigInteger nonSquare = BigInteger.ONE;

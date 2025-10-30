@@ -136,6 +136,13 @@ SPDX-License-Identifier: EUPL-1.2
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.github.spotbugs</groupId>
+      <artifactId>spotbugs-annotations</artifactId>
+      <version>4.8.6</version>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -219,7 +226,7 @@ SPDX-License-Identifier: EUPL-1.2
           <includeTestSourceDirectory>false</includeTestSourceDirectory>
           <consoleOutput>true</consoleOutput>
           <failsOnError>true</failsOnError>
-          <violationSeverity>error</violationSeverity>
+          <violationSeverity>warning</violationSeverity>
         </configuration>
         <executions>
           <execution>
@@ -243,6 +250,7 @@ SPDX-License-Identifier: EUPL-1.2
           </rulesets>
           <printFailingErrors>true</printFailingErrors>
           <failOnViolation>true</failOnViolation>
+          <linkXRef>false</linkXRef>
         </configuration>
         <executions>
           <execution>
