@@ -4,16 +4,15 @@
 
 package se.digg.crypto.hashtocurve.data;
 
+import java.math.BigInteger;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.math.BigInteger;
-
 /**
- * Supported profiles for hash to curve
- * <p>
- * _NU_ is identical to _RO_, * except that the encoding type is encode_to_curve. encode_to_curve is
- * not yet implemented in this lib, thus these options are not yet included
+ * Supported profiles for hash to curve.
+ *
+ * <p>_NU_ is identical to _RO_, * except that the encoding type is encode_to_curve. encode_to_curve is
+ * not yet implemented in this lib, thus these options are not yet included.
  */
 @Getter
 @AllArgsConstructor
@@ -30,11 +29,11 @@ public enum HashToCurveProfile {
   // curve25519_XMD_SHA_512_ELL2_NU_("curve25519_XMD:SHA-512_ELL2_NU_", BigInteger.valueOf(2), 128),
   ;
 
-  /** The cipher suite ID */
+  /** The cipher suite ID. */
   private final String cipherSuiteID;
 
   /**
-   * The z value is a value of the curve field that satisfies the following criteria:
+   * The z value is a value of the curve field that satisfies the following criteria.
    * <ol>
    * <li>Z is non-square in F. This is a field object e.g., F = GF(2^521 - 1).</li>
    * <li>Z is not equal to negative one -1 in the field F.</li>
@@ -44,7 +43,7 @@ public enum HashToCurveProfile {
    * </ol>
    */
   private final BigInteger Z;
-  /** The target security level in bits for the curve */
+  /** The target security level in bits for the curve. */
   private final int L;
   private final int k;
 

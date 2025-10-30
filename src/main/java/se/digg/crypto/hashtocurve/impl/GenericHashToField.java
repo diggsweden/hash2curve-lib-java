@@ -4,23 +4,22 @@
 
 package se.digg.crypto.hashtocurve.impl;
 
+import java.math.BigInteger;
 import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.util.Arrays;
 import se.digg.crypto.hashtocurve.H2cUtils;
 import se.digg.crypto.hashtocurve.HashToField;
 import se.digg.crypto.hashtocurve.MessageExpansion;
 
-import java.math.BigInteger;
-
 /**
- * Generic implementation of hash to field
+ * Generic implementation of hash to field.
  */
 public class GenericHashToField implements HashToField {
 
   protected final byte[] dst;
   protected final ECParameterSpec ecParameterSpec;
   protected final MessageExpansion messageExpansion;
-  /** Security parameter for the suite */
+  /** Security parameter for the suite. */
   protected int L;
   protected int m;
   protected BigInteger p;

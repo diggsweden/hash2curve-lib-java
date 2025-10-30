@@ -23,7 +23,7 @@ public class XmdMessageExpansion implements MessageExpansion {
 
   private final Digest digest;
 
-  /** The input block size of the selected hash algorithm */
+  /** The input block size of the selected hash algorithm. */
   private final int s;
 
   private final int hashOutputBytes;
@@ -127,7 +127,7 @@ public class XmdMessageExpansion implements MessageExpansion {
   }
 
   /**
-   * Calculates a hash over a message
+   * Calculates a hash over a message.
    *
    * @param message message
    * @return hash value

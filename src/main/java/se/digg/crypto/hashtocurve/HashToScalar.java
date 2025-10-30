@@ -7,7 +7,7 @@ package se.digg.crypto.hashtocurve;
 import java.math.BigInteger;
 
 /**
- * Interface for the Hash to Scalar operation
+ * Interface for the Hash to Scalar operation.
  */
 public interface HashToScalar {
 

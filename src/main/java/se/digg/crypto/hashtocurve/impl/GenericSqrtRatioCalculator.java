@@ -11,7 +11,7 @@ import se.digg.crypto.hashtocurve.SqrtRatioCalculator;
 import se.digg.crypto.hashtocurve.data.SqrtRatio;
 
 /**
- * Generic implementation of the SqrtRatio calculator
+ * Generic implementation of the SqrtRatio calculator.
  */
 public class GenericSqrtRatioCalculator implements SqrtRatioCalculator {
 

@@ -9,6 +9,9 @@ import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.math.ec.ECPoint;
 import se.digg.crypto.hashtocurve.CurveProcessor;
 
+/**
+ * Generic implementation of curve processor.
+ */
 @RequiredArgsConstructor
 public class GenericCurveProcessor implements CurveProcessor {
   private final ECParameterSpec ecParameterSpec;

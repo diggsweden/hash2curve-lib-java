@@ -5,15 +5,13 @@
 package se.digg.crypto.hashtocurve.impl;
 
 import java.math.BigInteger;
-
 import org.bouncycastle.crypto.Digest;
 import org.bouncycastle.jce.spec.ECParameterSpec;
-
 import se.digg.crypto.hashtocurve.HashToScalar;
 import se.digg.crypto.hashtocurve.MessageExpansion;
 
 /**
- * Generic implementation of Hash to Scalar for OPRF
+ * Generic implementation of Hash to Scalar for OPRF.
  */
 public class GenericOPRFHashToScalar implements HashToScalar {
 

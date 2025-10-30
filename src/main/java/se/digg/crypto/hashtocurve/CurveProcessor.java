@@ -7,7 +7,7 @@ package se.digg.crypto.hashtocurve;
 import org.bouncycastle.math.ec.ECPoint;
 
 /**
- * Process curve specific functions
+ * Process curve specific functions.
  */
 public interface CurveProcessor {
 

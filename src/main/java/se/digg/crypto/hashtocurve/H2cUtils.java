@@ -11,13 +11,13 @@ import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.util.Arrays;
 
 /**
- * Utility functions for hash 2 curve
+ * Utility functions for hash 2 curve.
  */
 @Slf4j
 public class H2cUtils {
 
   /**
-   * Constant time implementation of selection of value based on condition
+   * Constant time implementation of selection of value based on condition.
    *
    * @param a value selected on condition = false
    * @param b value selected on condition = true
@@ -31,7 +31,7 @@ public class H2cUtils {
   }
 
   /**
-   * Test if a value is square in a curve order
+   * Test if a value is square in a curve order.
    *
    * @param val value to test
    * @param order curve order
@@ -44,7 +44,7 @@ public class H2cUtils {
   }
 
   /**
-   * Calculate the square root of val in a curve order
+   * Calculate the square root of val in a curve order.
    *
    * @param val value
    * @param order curve order
@@ -170,7 +170,7 @@ public class H2cUtils {
   }
 
   /**
-   * Get the first non-square member of the curve order
+   * Get the first non-square member of the curve order.
    *
    * @param order curve order
    * @return first non-square member of the curve order

@@ -5,10 +5,8 @@
 package se.digg.crypto.hashtocurve.impl;
 
 import java.math.BigInteger;
-
 import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.math.ec.ECPoint;
-
 import se.digg.crypto.hashtocurve.H2cUtils;
 import se.digg.crypto.hashtocurve.MapToCurve;
 import se.digg.crypto.hashtocurve.SqrtRatioCalculator;
@@ -36,8 +34,8 @@ public class ShallueVanDeWoestijneMapToCurve implements MapToCurve {
    * Processes the given input value to map it to an elliptic curve point using the Shallue-van de
    * Woestijne algorithm, optimized for Weierstrass curves. This implementation adheres to the
    * specifications outlined in RFC 9380, section 6.6.2, and section F.2 for efficient computation.
-   * <p>
-   * The method computes the x and y coordinates for the point on the elliptic curve, using modular
+   *
+   * <p>The method computes the x and y coordinates for the point on the elliptic curve, using modular
    * arithmetic and auxiliary functions for square root computation and conditional assignments.
    *
    * @param u the input value to be mapped to a point on the elliptic curve

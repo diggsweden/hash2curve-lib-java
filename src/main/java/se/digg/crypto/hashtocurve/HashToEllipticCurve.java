@@ -5,18 +5,21 @@
 package se.digg.crypto.hashtocurve;
 
 import java.math.BigInteger;
-
-import org.bouncycastle.math.ec.ECPoint;
-
 import lombok.RequiredArgsConstructor;
+import org.bouncycastle.math.ec.ECPoint;
 import se.digg.crypto.hashtocurve.data.HashToCurveProfile;
 
 /**
- * Main class for implementing hash to elliptic curve according to RFC 9380
- * <p>
- * <code>
- * Steps: 1. u = hash_to_field(msg, 2) 2. Q0 = map_to_curve(u[0]) 3. Q1 = map_to_curve(u[1]) 4. R = Q0 + Q1
- * # Point addition 5. P = clear_cofactor(R) 6. return P
+ * Main class for implementing hash to elliptic curve according to RFC 9380.
+ *
+ * <p><code>
+ * Steps:
+ * 1. u = hash_to_field(msg, 2)
+ * 2. Q0 = map_to_curve(u[0])
+ * 3. Q1 = map_to_curve(u[1])
+ * 4. R = Q0 + Q1 # Point addition
+ * 5. P = clear_cofactor(R)
+ * 6. return P
  * </code>
  */
 @RequiredArgsConstructor
