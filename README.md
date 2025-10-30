@@ -7,5 +7,6 @@
 
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/diggsweden/hash2curve-lib-java/badge?style=for-the-badge)](https://scorecard.dev/viewer/?uri=github.com/diggsweden/hash2curve-lib-java)
 
-This library implements Hash2Curve and Hash2Scalar according to RFC 9380 for a number of common curves, including
-common NIST curves.
+This library implements Hash2Curve and Hash2Scalar according to RFC 9380 for a number of common curves, including common NIST curves.
+
+Test
