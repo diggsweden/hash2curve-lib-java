@@ -14,9 +14,13 @@ import se.digg.crypto.hashtocurve.MessageExpansion;
 /**
  * Generic implementation of hash to field.
  */
+@SuppressWarnings("checkstyle:MemberName")
 public class GenericHashToField implements HashToField {
 
   protected final byte[] dst;
+  @edu.umd.cs.findbugs.annotations.SuppressFBWarnings(
+      value = "URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD",
+      justification = "ecParameterSpec is used internally by subclasses")
   protected final ECParameterSpec ecParameterSpec;
   protected final MessageExpansion messageExpansion;
   /** Security parameter for the suite. */
@@ -25,11 +29,16 @@ public class GenericHashToField implements HashToField {
   protected BigInteger p;
   protected final int count;
 
+  @SuppressWarnings("checkstyle:ParameterName")
   public GenericHashToField(final byte[] dst, final ECParameterSpec ecParameterSpec,
       final MessageExpansion messageExpansion, final int L) {
     this(dst, ecParameterSpec, messageExpansion, L, 2);
   }
 
+  @SuppressWarnings("checkstyle:ParameterName")
+  @edu.umd.cs.findbugs.annotations.SuppressFBWarnings(
+      value = "EI_EXPOSE_REP2",
+      justification = "dst byte array is intentionally stored for internal use")
   public GenericHashToField(final byte[] dst, final ECParameterSpec ecParameterSpec,
       final MessageExpansion messageExpansion, final int L,
       final int count) {

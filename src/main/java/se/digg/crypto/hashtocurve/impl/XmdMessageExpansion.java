@@ -19,6 +19,7 @@ import se.digg.crypto.hashtocurve.MessageExpansion;
  * given message to a specified length in bytes while following cryptographic domain separation
  * principles. The implementation uses a selected hash function to achieve the expansion.
  */
+@SuppressWarnings("checkstyle:MemberName")
 public class XmdMessageExpansion implements MessageExpansion {
 
   private final Digest digest;
@@ -28,6 +29,9 @@ public class XmdMessageExpansion implements MessageExpansion {
 
   private final int hashOutputBytes;
 
+  @edu.umd.cs.findbugs.annotations.SuppressFBWarnings(
+      value = "CT_CONSTRUCTOR_THROW",
+      justification = "Constructor validation throws IllegalArgumentException by design")
   public XmdMessageExpansion(final Digest digest, final int k, final int s) {
     this.digest = digest;
     this.s = s;
@@ -45,6 +49,9 @@ public class XmdMessageExpansion implements MessageExpansion {
    * @param digest the cryptographic digest algorithm to be used
    * @param k the security parameter defining the required minimum security strength
    */
+  @edu.umd.cs.findbugs.annotations.SuppressFBWarnings(
+      value = "CT_CONSTRUCTOR_THROW",
+      justification = "Constructor validation throws IllegalArgumentException by design")
   public XmdMessageExpansion(final Digest digest, final int k) {
     this(digest, k, getInputBlockSize(digest));
   }

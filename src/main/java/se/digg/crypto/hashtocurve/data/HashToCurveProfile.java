@@ -11,10 +11,10 @@ import lombok.Getter;
 /**
  * Supported profiles for hash to curve.
  *
- * <p>
- * _NU_ is identical to _RO_, * except that the encoding type is encode_to_curve. encode_to_curve is
- * not yet implemented in this lib, thus these options are not yet included.
+ * <p>_NU_ is identical to _RO_, * except that the encoding type is encode_to_curve.
+ * encode_to_curve is not yet implemented in this lib, thus these options are not yet included.
  */
+@SuppressWarnings({"checkstyle:MemberName", "checkstyle:AbbreviationAsWordInName"})
 @Getter
 @AllArgsConstructor
 public enum HashToCurveProfile {

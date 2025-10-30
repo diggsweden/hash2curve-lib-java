@@ -64,7 +64,7 @@ verify-deps:
     fi
     printf '\n'
 
-# Run all linters
+# ** Run all linters
 lint: lint-java lint-markdown lint-yaml lint-actions lint-shell lint-commit lint-secrets
     @printf '{{green}}{{checkmark}} All linting passed{{nc}}\n'
 
@@ -143,13 +143,13 @@ format:
     @mvn formatter:format
     @printf '{{green}}{{checkmark}} Java code formatted{{nc}}\n\n'
 
-# Run tests (Maven verify)
+# ** Run tests (Maven verify)
 test:
     @printf '{{yellow}}************ RUNNING TESTS ***********{{nc}}\n'
     @mvn {{maven_opts}} clean verify
     @printf '{{green}}{{checkmark}} Tests passed{{nc}}\n\n'
 
-# Auto-fix linting issues where possible
+# ** Auto-fix linting issues where possible
 lint-fix: lint-markdown-fix lint-yaml-fix lint-shell-fix
     @printf '{{green}}{{checkmark}} Auto-fixes applied{{nc}}\n'
 
