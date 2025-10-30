@@ -10,6 +10,6 @@ import java.math.BigInteger;
  * The result of a sqrt_ration calculation.
  */
 public record SqrtRatio(
-        boolean isQR,
-        BigInteger ratio) {
+    boolean isQR,
+    BigInteger ratio) {
 }

@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   pr-checks:
-    uses: diggsweden/reusable-ci/.github/workflows/pullrequest-orchestrator.yml@1a7dcd9c5257495ebf141e4e4b4bac438a8aae56 # v2.0.0
+    uses: diggsweden/reusable-ci/.github/workflows/pullrequest-orchestrator.yml@feat/branch-2.1
     secrets: inherit # Pass org-level secrets (for private dependencies if any)
     permissions:
       contents: read # Clone repository and read source code
@@ -21,8 +21,11 @@ jobs:
       security-events: write # Upload SpotBugs/dependency check results to Security tab
     with:
       project-type: maven
-      linters.megalint: false # Disable heavy MegaLinter
-      linters.justmiselint: true # Enable lightweight just+mise linting
+      workflows-ref: feat/branch-2.1 # Use feature branch with enhanced linting
+      linters.megalint: false # Deprecated - replaced by just+mise
+      linters.justmiselint: true # Use just+mise for all linting
+      linters.commitlint: false # Deprecated - handled by just+mise
+      linters.licenselint: false # Deprecated - handled by just+mise
 
   test:
     needs: [pr-checks]
