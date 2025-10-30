@@ -19,10 +19,10 @@ public class H2cUtils {
   /**
    * Constant time implementation of selection of value based on condition
    *
-   * @param a         value selected on condition = false
-   * @param b         value selected on condition = true
+   * @param a value selected on condition = false
+   * @param b value selected on condition = true
    * @param condition condition
-   * @param <T>       the type of object to select
+   * @param <T> the type of object to select
    * @return 'a' if condition is false, else 'b'
    */
   public static <T> T cmov(final T a, final T b, final boolean condition) {
@@ -33,7 +33,7 @@ public class H2cUtils {
   /**
    * Test if a value is square in a curve order
    *
-   * @param val   value to test
+   * @param val value to test
    * @param order curve order
    * @return true if val is square
    */
@@ -46,7 +46,7 @@ public class H2cUtils {
   /**
    * Calculate the square root of val in a curve order
    *
-   * @param val   value
+   * @param val value
    * @param order curve order
    * @return square root of val in curve order
    */
@@ -82,7 +82,7 @@ public class H2cUtils {
   /**
    * Returns the sign of the BigInteger 'val' using the given ECParameterSpec 'spec'.
    *
-   * @param val  the BigInteger value
+   * @param val the BigInteger value
    * @param spec the ECParameterSpec specifying the curve field
    * @return the sign of 'val'
    * @throws IllegalArgumentException if spec.getCurve().getField().getDimension() != 1
@@ -99,7 +99,7 @@ public class H2cUtils {
    * Calculates the modular inverse of a BigInteger 'val' with respect to a given BigInteger
    * 'order'.
    *
-   * @param val   the BigInteger value to calculate the inverse for
+   * @param val the BigInteger value to calculate the inverse for
    * @param order the BigInteger representing the order
    * @return the modular inverse of 'val' with respect to 'order'
    */
@@ -113,8 +113,7 @@ public class H2cUtils {
    * @param val the integer value to be converted
    * @param len the length of the resulting byte array
    * @return the byte array representation of the integer value
-   * @throws IllegalArgumentException if the value requires more bytes than the assigned length
-   *                                  size
+   * @throws IllegalArgumentException if the value requires more bytes than the assigned length size
    */
   public static byte[] i2osp(final int val, final int len) {
     final byte[] lengthVal = new BigInteger(String.valueOf(val)).toByteArray();
@@ -153,7 +152,7 @@ public class H2cUtils {
    * @param arg1 the first byte array
    * @param arg2 the second byte array
    * @return the result of the XOR operation as a new byte array
-   * @throws NullPointerException     if either arg1 or arg2 is null
+   * @throws NullPointerException if either arg1 or arg2 is null
    * @throws IllegalArgumentException if arg1 and arg2 have different lengths
    */
   public static byte[] xor(final byte[] arg1, final byte[] arg2) {

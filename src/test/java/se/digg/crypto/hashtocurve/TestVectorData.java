@@ -22,72 +22,72 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TestVectorData {
 
-    @JsonProperty("L")
-    private String L;
+  @JsonProperty("L")
+  private String L;
 
-    @JsonProperty("Z")
-    private String Z;
+  @JsonProperty("Z")
+  private String Z;
 
-    @JsonProperty("ciphersuite")
-    private String ciphersuite;
+  @JsonProperty("ciphersuite")
+  private String ciphersuite;
 
-    @JsonProperty("curve")
-    private String curve;
+  @JsonProperty("curve")
+  private String curve;
 
-    @JsonProperty("dst")
-    private String dst;
+  @JsonProperty("dst")
+  private String dst;
 
-    @JsonProperty("expand")
-    private String expand;
+  @JsonProperty("expand")
+  private String expand;
 
-    @JsonProperty("field")
-    private Field field;
+  @JsonProperty("field")
+  private Field field;
 
-    @JsonProperty("hash")
-    private String hash;
+  @JsonProperty("hash")
+  private String hash;
 
-    @JsonProperty("k")
-    private String k;
+  @JsonProperty("k")
+  private String k;
 
-    @JsonProperty("map")
-    private Map<String, String> map;
+  @JsonProperty("map")
+  private Map<String, String> map;
 
-    @JsonProperty("randomOracle")
-    private boolean randomOracle;
+  @JsonProperty("randomOracle")
+  private boolean randomOracle;
 
-    @JsonProperty("vectors")
-    private List<Vector> vectors;
+  @JsonProperty("vectors")
+  private List<Vector> vectors;
 
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class Field {
+  @Data
+  @AllArgsConstructor
+  @NoArgsConstructor
+  public static class Field {
 
-        @JsonProperty("m")
-        private String m;
+    @JsonProperty("m")
+    private String m;
 
-        @JsonProperty("p")
-        private String p;
-    }
+    @JsonProperty("p")
+    private String p;
+  }
 
-    @Data
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class Vector {
+  @Data
+  @AllArgsConstructor
+  @NoArgsConstructor
+  public static class Vector {
 
-        @JsonProperty("P")
-        private Map<String, String> P;
+    @JsonProperty("P")
+    private Map<String, String> P;
 
-        @JsonProperty("Q0")
-        private Map<String, String> Q0;
+    @JsonProperty("Q0")
+    private Map<String, String> Q0;
 
-        @JsonProperty("Q1")
-        private Map<String, String> Q1;
+    @JsonProperty("Q1")
+    private Map<String, String> Q1;
 
-        @JsonProperty("msg")
-        private String msg;
+    @JsonProperty("msg")
+    private String msg;
 
-        @JsonProperty("u")
-        private List<String> u;
-    }
+    @JsonProperty("u")
+    private List<String> u;
+  }
 }

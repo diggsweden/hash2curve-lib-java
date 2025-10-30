@@ -45,13 +45,13 @@ public class HashToEllipticCurveTest {
   @Test
   public void testTestVectors() throws Exception {
 
-    //TODO Add support for Montgomery curves (required for curve25519).
+    // TODO Add support for Montgomery curves (required for curve25519).
 
     List<HashToCurveProfile> profileList = List.of(
         HashToCurveProfile.P256_XMD_SHA_256_SSWU_RO_,
         HashToCurveProfile.P384_XMD_SHA_384_SSWU_RO_,
         HashToCurveProfile.P521_XMD_SHA_512_SSWU_RO_
-        //    HashToCurveProfile.curve25519_XMD_SHA_512_ELL2_RO_
+    // HashToCurveProfile.curve25519_XMD_SHA_512_ELL2_RO_
     );
 
     for (HashToCurveProfile profile : profileList) {
@@ -66,14 +66,13 @@ public class HashToEllipticCurveTest {
     int L = h2bi(tvd.getL()).intValue();
     log.info("Performing test vector tests on ciphersuite: {}", profile.getCipherSuiteID());
     log.info("Details:\n"
-            + "   Curve: {}\n"
-            + "   Hash: {}\n"
-            + "   dst: {}\n"
-            + "   L: {}\n"
-            + "   Z: {}\n"
-            + "   Field m: {}\n"
-            + "   Field p: {}\n"
-        , tvd.getCurve(), tvd.getHash(), tvd.getDst(), L, Z,
+        + "   Curve: {}\n"
+        + "   Hash: {}\n"
+        + "   dst: {}\n"
+        + "   L: {}\n"
+        + "   Z: {}\n"
+        + "   Field m: {}\n"
+        + "   Field p: {}\n", tvd.getCurve(), tvd.getHash(), tvd.getDst(), L, Z,
         tvd.getField().getM(), tvd.getField().getP());
 
     ECParameterSpec spec = switch (profile) {

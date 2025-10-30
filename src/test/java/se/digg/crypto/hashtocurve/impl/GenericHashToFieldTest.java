@@ -38,7 +38,8 @@ public class GenericHashToFieldTest {
   public void testGenericHashToField() {
     byte[] message = new byte[] {};
     byte[] dst = "QUUX-V01-CS02-with-P256_XMD:SHA-256_SSWU_RO_".getBytes(StandardCharsets.UTF_8);
-    GenericHashToField testInstance = new GenericHashToField(dst, ecParameterSpec, messageExpansion, 48);
+    GenericHashToField testInstance =
+        new GenericHashToField(dst, ecParameterSpec, messageExpansion, 48);
     BigInteger[][] result = testInstance.process(message);
 
     log.info("U0 : {}", Hex.toHexString(result[0][0].toByteArray()));

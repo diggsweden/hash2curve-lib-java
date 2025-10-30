@@ -31,7 +31,8 @@ public class GenericHashToField implements HashToField {
     this(dst, ecParameterSpec, messageExpansion, L, 2);
   }
 
-  public GenericHashToField(final byte[] dst, final ECParameterSpec ecParameterSpec, final MessageExpansion messageExpansion, final int L,
+  public GenericHashToField(final byte[] dst, final ECParameterSpec ecParameterSpec,
+      final MessageExpansion messageExpansion, final int L,
       final int count) {
     this.dst = dst;
     this.ecParameterSpec = ecParameterSpec;

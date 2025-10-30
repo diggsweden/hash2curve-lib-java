@@ -15,8 +15,8 @@ import se.digg.crypto.hashtocurve.SqrtRatioCalculator;
 import se.digg.crypto.hashtocurve.data.SqrtRatio;
 
 /**
- * Implements the Shallue van de Woestijne Map to curve according to section 6.6.2 of RFC 9380 This is the straight-line
- * implementation optimized for Weierstrass curves as defined in section F.2.
+ * Implements the Shallue van de Woestijne Map to curve according to section 6.6.2 of RFC 9380 This
+ * is the straight-line implementation optimized for Weierstrass curves as defined in section F.2.
  */
 public class ShallueVanDeWoestijneMapToCurve implements MapToCurve {
 
@@ -25,19 +25,20 @@ public class ShallueVanDeWoestijneMapToCurve implements MapToCurve {
 
   private final SqrtRatioCalculator sqrtRatioCalculator;
 
-  public ShallueVanDeWoestijneMapToCurve(final ECParameterSpec ecParameterSpec, final BigInteger z) {
+  public ShallueVanDeWoestijneMapToCurve(final ECParameterSpec ecParameterSpec,
+      final BigInteger z) {
     this.ecParameterSpec = ecParameterSpec;
     this.z = z;
     this.sqrtRatioCalculator = new GenericSqrtRatioCalculator(ecParameterSpec, z);
   }
 
   /**
-   * Processes the given input value to map it to an elliptic curve point using the Shallue-van de Woestijne
-   * algorithm, optimized for Weierstrass curves. This implementation adheres to the specifications outlined
-   * in RFC 9380, section 6.6.2, and section F.2 for efficient computation.
+   * Processes the given input value to map it to an elliptic curve point using the Shallue-van de
+   * Woestijne algorithm, optimized for Weierstrass curves. This implementation adheres to the
+   * specifications outlined in RFC 9380, section 6.6.2, and section F.2 for efficient computation.
    * <p>
-   * The method computes the x and y coordinates for the point on the elliptic curve, using modular arithmetic
-   * and auxiliary functions for square root computation and conditional assignments.
+   * The method computes the x and y coordinates for the point on the elliptic curve, using modular
+   * arithmetic and auxiliary functions for square root computation and conditional assignments.
    *
    * @param u the input value to be mapped to a point on the elliptic curve
    * @return the computed point on the elliptic curve represented as an ECPoint
@@ -73,7 +74,8 @@ public class ShallueVanDeWoestijneMapToCurve implements MapToCurve {
     y = y.multiply(y1).mod(p);
     x = H2cUtils.cmov(x, tv3, isGx1Square);
     y = H2cUtils.cmov(y, y1, isGx1Square);
-    final boolean e1 = H2cUtils.sgn0(u, this.ecParameterSpec) == H2cUtils.sgn0(y, this.ecParameterSpec);
+    final boolean e1 =
+        H2cUtils.sgn0(u, this.ecParameterSpec) == H2cUtils.sgn0(y, this.ecParameterSpec);
     y = H2cUtils.cmov(y.negate(), y, e1).mod(p);
     x = x.multiply(tv4.modPow(BigInteger.ONE.negate(), p)).mod(p);
     return this.ecParameterSpec.getCurve().createPoint(x, y);

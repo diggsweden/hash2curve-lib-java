@@ -11,6 +11,5 @@ import java.math.BigInteger;
  */
 public record SqrtRatio(
     boolean isQR,
-    BigInteger ratio
-) {
+    BigInteger ratio) {
 }

@@ -22,9 +22,10 @@ public class ShallueVanDeWoestijneMapToCurveTest {
 
 
   /*
-  This test class is testing the "process" method in "ShallueVanDeWoestijneMapToCurve" class which implements
-  the Shallue van de Woestijne Map to curve according to section 6.6.1 of RFC 9380.
-  */
+   * This test class is testing the "process" method in "ShallueVanDeWoestijneMapToCurve" class
+   * which implements the Shallue van de Woestijne Map to curve according to section 6.6.1 of RFC
+   * 9380.
+   */
   @BeforeAll
   public static void setup() {
     if (Security.getProvider("BC") == null) {
@@ -42,13 +43,14 @@ public class ShallueVanDeWoestijneMapToCurveTest {
         new ShallueVanDeWoestijneMapToCurve(ecParameterSpec, BigInteger.valueOf(-10));
 
     testSpecificMapping(new BigInteger(1,
-            Hex.decode("ad5342c66a6dd0ff080df1da0ea1c04b96e0330dd89406465eeba11582515009")),
+        Hex.decode("ad5342c66a6dd0ff080df1da0ea1c04b96e0330dd89406465eeba11582515009")),
         mapToCurve);
     testSpecificMapping(new BigInteger(1,
-            Hex.decode("8c0f1d43204bd6f6ea70ae8013070a1518b43873bcd850aafa0a9e220e2eea5a")),
+        Hex.decode("8c0f1d43204bd6f6ea70ae8013070a1518b43873bcd850aafa0a9e220e2eea5a")),
         mapToCurve);
 
-    //        u0 = new BigInteger("78397231975818298121002851560982570386422970797899025056634496834376049971209");
+    // u0 = new
+    // BigInteger("78397231975818298121002851560982570386422970797899025056634496834376049971209");
 
   }
 

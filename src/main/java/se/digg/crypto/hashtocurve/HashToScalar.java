@@ -12,8 +12,8 @@ import java.math.BigInteger;
 public interface HashToScalar {
 
   /**
-   * Hash the given input bytes and domain separatin tag bytes as part of a Hash to Scalar operation, producing a valid
-   * scalar on an eliptic curve.
+   * Hash the given input bytes and domain separatin tag bytes as part of a Hash to Scalar
+   * operation, producing a valid scalar on an eliptic curve.
    *
    * @param input the input byte array to be processed
    * @param dst the destination byte array used in the operation

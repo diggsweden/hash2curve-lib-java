@@ -22,10 +22,13 @@ public class GenericOPRFHashToScalar implements HashToScalar {
 
   private final int L;
 
-  public GenericOPRFHashToScalar(final ECParameterSpec ecParameterSpec, final Digest digest, final int k) {
+  public GenericOPRFHashToScalar(final ECParameterSpec ecParameterSpec, final Digest digest,
+      final int k) {
     this.ecParameterSpec = ecParameterSpec;
     this.L =
-        (int) Math.ceil(((double) ecParameterSpec.getCurve().getOrder().subtract(BigInteger.ONE).bitLength() + k) / 8);
+        (int) Math.ceil(
+            ((double) ecParameterSpec.getCurve().getOrder().subtract(BigInteger.ONE).bitLength()
+                + k) / 8);
     this.messageExpansion = new XmdMessageExpansion(digest, k);
   }
 

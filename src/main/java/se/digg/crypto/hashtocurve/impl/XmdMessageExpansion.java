@@ -15,9 +15,9 @@ import se.digg.crypto.hashtocurve.H2cUtils;
 import se.digg.crypto.hashtocurve.MessageExpansion;
 
 /**
- * XmdMessageExpansion is an implementation of the XMD MessageExpansion interface, used to expand a given message to a
- * specified length in bytes while following cryptographic domain separation principles. The implementation uses a
- * selected hash function to achieve the expansion.
+ * XmdMessageExpansion is an implementation of the XMD MessageExpansion interface, used to expand a
+ * given message to a specified length in bytes while following cryptographic domain separation
+ * principles. The implementation uses a selected hash function to achieve the expansion.
  */
 public class XmdMessageExpansion implements MessageExpansion {
 
@@ -33,15 +33,17 @@ public class XmdMessageExpansion implements MessageExpansion {
     this.s = s;
     this.hashOutputBytes = digest.getDigestSize();
     if (this.hashOutputBytes < (int) Math.ceil((double) (k * 2) / 8)) {
-      throw new IllegalArgumentException("Hash output size is too small for the security level of the curve");
+      throw new IllegalArgumentException(
+          "Hash output size is too small for the security level of the curve");
     }
   }
 
   /**
-   * Constructs an XmdMessageExpansion instance with the given digest algorithm and security parameter.
+   * Constructs an XmdMessageExpansion instance with the given digest algorithm and security
+   * parameter.
    *
    * @param digest the cryptographic digest algorithm to be used
-   * @param k      the security parameter defining the required minimum security strength
+   * @param k the security parameter defining the required minimum security strength
    */
   public XmdMessageExpansion(final Digest digest, final int k) {
     this(digest, k, getInputBlockSize(digest));
@@ -52,7 +54,8 @@ public class XmdMessageExpansion implements MessageExpansion {
    *
    * @param digest the cryptographic digest algorithm whose input block size is to be determined
    * @return the input block size in bits for the provided digest algorithm
-   * @throws IllegalArgumentException if the provided digest algorithm is not supported or has an illegal configuration
+   * @throws IllegalArgumentException if the provided digest algorithm is not supported or has an
+   *         illegal configuration
    */
   private static int getInputBlockSize(final Digest digest) {
     if (digest instanceof SHA256Digest) {
@@ -78,33 +81,37 @@ public class XmdMessageExpansion implements MessageExpansion {
 
   /**
    * Expands a given input message to a fixed-length output, using a cryptographic digest and
-   * additional parameters such as domain separation tag (DST) and desired output length.
-   * This method is compliant with hash-to-curve message expansion defined in certain cryptographic
+   * additional parameters such as domain separation tag (DST) and desired output length. This
+   * method is compliant with hash-to-curve message expansion defined in certain cryptographic
    * algorithms and standards.
    *
    * @param msg the input message to be expanded
    * @param dst the domain separation tag used to isolate cryptographic domains
    * @param lenInBytes the desired byte-length of the output message
    * @return the byte array resulting from the message expansion process
-   * @throws IllegalArgumentException if ell exceeds 255, lenInBytes exceeds 65535,
-   *                                  or dst length is greater than 255
+   * @throws IllegalArgumentException if ell exceeds 255, lenInBytes exceeds 65535, or dst length is
+   *         greater than 255
    */
   @Override
   public byte[] expandMessage(final byte[] msg, final byte[] dst, final int lenInBytes) {
     final int ell = (int) Math.ceil((double) lenInBytes / this.hashOutputBytes);
     if (ell > 255) {
-      throw new IllegalArgumentException("Ell parameter must not be greater than 255. Current value = " + ell);
+      throw new IllegalArgumentException(
+          "Ell parameter must not be greater than 255. Current value = " + ell);
     }
     if (lenInBytes > 65535) {
-      throw new IllegalArgumentException("Output size must not be greater than 65535. Current value = " + lenInBytes);
+      throw new IllegalArgumentException(
+          "Output size must not be greater than 65535. Current value = " + lenInBytes);
     }
     if (dst.length > 255) {
-      throw new IllegalArgumentException("DST size must not be greater than 255. Current value = " + dst.length);
+      throw new IllegalArgumentException(
+          "DST size must not be greater than 255. Current value = " + dst.length);
     }
     final byte[] dstPrime = Arrays.concatenate(dst, H2cUtils.i2osp(dst.length, 1));
     final byte[] zPad = H2cUtils.i2osp(0, this.s / 8);
     final byte[] libStr = H2cUtils.i2osp(lenInBytes, 2);
-    final byte[] msgPrime = Arrays.concatenate(new byte[][] { zPad, msg, libStr, H2cUtils.i2osp(0, 1), dstPrime });
+    final byte[] msgPrime =
+        Arrays.concatenate(new byte[][] {zPad, msg, libStr, H2cUtils.i2osp(0, 1), dstPrime});
     final byte[][] b = new byte[ell + 1][this.hashOutputBytes];
     b[0] = this.hash(msgPrime);
     b[1] = this.hash(Arrays.concatenate(b[0], H2cUtils.i2osp(1, 1), dstPrime));
@@ -113,8 +120,7 @@ public class XmdMessageExpansion implements MessageExpansion {
       b[i] = this.hash(Arrays.concatenate(
           H2cUtils.xor(b[0], b[i - 1]),
           H2cUtils.i2osp(i, 1),
-          dstPrime
-      ));
+          dstPrime));
       uniformBytes = Arrays.concatenate(uniformBytes, b[i]);
     }
     return Arrays.copyOfRange(uniformBytes, 0, lenInBytes);

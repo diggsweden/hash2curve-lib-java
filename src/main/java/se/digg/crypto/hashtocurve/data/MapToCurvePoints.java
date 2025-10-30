@@ -11,7 +11,6 @@ import org.bouncycastle.math.ec.ECPoint;
  */
 public record MapToCurvePoints(
     ECPoint q0,
-    ECPoint q1
-) {
+    ECPoint q1) {
 
 }
