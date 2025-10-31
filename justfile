@@ -69,29 +69,40 @@ lint: lint-java lint-markdown lint-yaml lint-actions lint-shell lint-commit lint
     @printf '{{green}}{{checkmark}} All linting passed{{nc}}\n'
 
 # Lint Java code (via Maven plugins)
+# linter-name: Java Code Quality
+# linter-tools: checkstyle, pmd, spotbugs
+# Lint Java code (via Maven plugins)
 lint-java:
     @printf '{{yellow}}************ JAVA LINTING ***********{{nc}}\n'
     @mvn {{maven_opts}} checkstyle:check pmd:check spotbugs:check
     @printf '{{green}}{{checkmark}} Java linting passed{{nc}}\n\n'
 
+# linter-name: Markdown
+# linter-tools: rumdl
 # Lint markdown files
 lint-markdown:
     @printf '{{yellow}}************ MARKDOWN LINTING ***********{{nc}}\n'
     @rumdl check . || exit 1
     @printf '{{green}}{{checkmark}} Markdown linting passed{{nc}}\n\n'
 
+# linter-name: YAML Formatting
+# linter-tools: yamlfmt
 # Lint YAML files
 lint-yaml:
     @printf '{{yellow}}************ YAML LINTING ***********{{nc}}\n'
     @yamlfmt -lint . || exit 1
     @printf '{{green}}{{checkmark}} YAML linting passed{{nc}}\n\n'
 
+# linter-name: GitHub Actions
+# linter-tools: actionlint
 # Lint GitHub Actions
 lint-actions:
     @printf '{{yellow}}************ ACTIONS LINTING ***********{{nc}}\n'
     @actionlint || exit 1
     @printf '{{green}}{{checkmark}} Actions linting passed{{nc}}\n\n'
 
+# linter-name: Shell Scripts
+# linter-tools: shellcheck, shfmt
 # Lint shell scripts
 lint-shell:
     #!/usr/bin/env bash
@@ -105,6 +116,8 @@ lint-shell:
     fi
     printf '{{green}}{{checkmark}} Shell linting passed{{nc}}\n\n'
 
+# linter-name: License Headers
+# linter-tools: reuse
 # Check licenses with REUSE
 lint-license:
     @printf '{{yellow}}************ LICENSE CHECK (REUSE) ***********{{nc}}\n'
@@ -116,6 +129,8 @@ lint-license:
     @{{container_runtime}} run --rm --volume "$(pwd)":/data docker.io/fsfe/reuse:5.0.2-debian lint || exit 1
     @printf '{{green}}{{checkmark}} License check passed{{nc}}\n\n'
 
+# linter-name: Commit Messages
+# linter-tools: conform
 # Check commits with conform
 lint-commit:
     #!/usr/bin/env bash
@@ -131,6 +146,8 @@ lint-commit:
     fi
     printf '{{green}}{{checkmark}} Commit check passed{{nc}}\n\n'
 
+# linter-name: Secret Scanning
+# linter-tools: gitleaks
 # Scan for secrets
 lint-secrets:
     @printf '{{yellow}}************ SECRET SCANNING ***********{{nc}}\n'
