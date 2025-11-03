@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.8.0-SNAPSHOT] - 2025-10-28
+## [0.8.0-SNAPSHOT] - 2025-10-31
 
 ### Added
 
@@ -13,12 +13,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Use v2.1.1 of reuseable ci
+- Improve just lint support
+- Format with mvn formatter and google style
+- Use just mise for quality and ci
 - Update dependency org.junit.jupiter:junit-jupiter to v6
 - Corrected scorecard badges
 
 ### Fixed
 
+- Pass all lints and warnings
+- Change license to recommended format
+- Fix a lot of checkstyle warnings
 - Fix PMD blocking errors and allow docker for MegaLinter
+
 
 ## [0.0.1-SNAPSHOT] - 2025-10-24
 
